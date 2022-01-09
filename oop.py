@@ -270,19 +270,19 @@ class Point:
 # print(c1.__dict__)
 # print(c1.cordes_x)
 
-class Kgfunt:
-
-    def __init__(self, kg):
-        self.__kg = kg
-
-    @property
-    def kg_funt(self):
-        return self.__kg * 2.205
-
-    @kg_funt.setter
-    def kg_funt(self, kg):
-        if type(kg) == int or type(kg) == float:
-            self.__kg = kg
+# class Kgfunt:
+#
+#     def __init__(self, kg):
+#         self.__kg = kg
+#
+#     @property
+#     def kg_funt(self):
+#         return self.__kg * 2.205
+#
+#     @kg_funt.setter
+#     def kg_funt(self, kg):
+#         if type(kg) == int or type(kg) == float:
+#             self.__kg = kg
 
 
 # p1 = Kgfunt(10)
@@ -290,20 +290,233 @@ class Kgfunt:
 # p1.kg_funt = 20
 # print(p1.kg_funt)
 
-class Point:
-    __count = 0
+# class Point:
+#     __count = 0
+#
+#     def __init__(self, x=0, y=0):
+#         self.x = x
+#         self.y = y
+#         Point.__count += 1
+#
+#     @staticmethod
+#     def get_count():
+#         return Point.__count
 
-    def __init__(self, x=0, y=0):
-        self.x = x
-        self.y = y
-        Point.__count += 1
+
+# p1 = Point()
+# p1 = Point()
+# p1 = Point()
+# print(p1.get_count())
+
+class Person:
+    def __init__(self, name, old):
+        self.__name = name
+        self.__old = old
+
+    @property
+    def name(self):
+        return self.__name
+
+    @name.setter
+    def name(self, n):
+        self.__name = n
+
+    @name.deleter
+    def name(self):
+        del self.__name
+
+    @property
+    def old(self):
+        return self.__old
+
+    @old.setter
+    def old(self, n):
+        self.__old = n
+
+    @old.deleter
+    def old(self):
+        del self.__old
+
+
+# p1 = Person("Irina", 36)
+# print(p1.name)
+# p1.name = "Iror"
+# # del p1.name
+# print(p1.__dict__)
+# p1.old = 21
+# print(p1.__dict__)
+
+# class Change:
+#     @staticmethod
+#     def inc(x):
+#         return x+1
+#     @staticmethod
+#     def dec(x):
+#         return x-1
+#
+# print(Change.inc(11), Change.dec(10))
+# import math
+# class Mat:
+#     @staticmethod
+#     def maximum(a, b, c, d):
+#         return max(a, b, c, d)
+#
+#     @staticmethod
+#     def minimum(a, b, c, d):
+#         return min(a, b, c, d)
+#     @staticmethod
+#     def mid(a, b, c, d):
+#         return round((a+b+c+d)/4,2)
+#
+#     @staticmethod
+#     def fact(x):
+#         return math.factorial(x)
+#
+# print(Mat.maximum(3,5,11,9))
+# print(Mat.minimum(3,5,7,9))
+# print(Mat.mid(3,5,7,9))
+# print(Mat.fact(5))
+# import math
+#
+#
+# class Area:
+#     count = 0
+#
+#     # def __init__(self):
+#     #     Area.count += 1
+#
+#     @staticmethod
+#     def triangle_aria(a, b, c):
+#         Area.count += 1
+#         p = (a + b + c) / 2
+#         return math.sqrt(p * (p - a) * (p - b) * (p - c))
+#
+#     @staticmethod
+#     def triangle_aria2(a, h):
+#         Area.count += 1
+#         return 0.5 * a * h
+#
+#     @staticmethod
+#     def square_aria(a):
+#         Area.count += 1
+#         return a ** 2
+#
+#     @staticmethod
+#     def get_count():
+#         return Area.count
+#
+#
+# print("Площадь треугольника", Area.triangle_aria(3, 4, 5))
+# print("Площадь треугольника через основание и высоту", Area.triangle_aria2(6, 7))
+# print("Площадь квадрата", Area.square_aria(7))
+# print("количество подсчетов", Area.get_count())
+# pl = Area()
+# print("Площадь треугольника", pl.triangle_aria(3, 4, 5))
+# print("Площадь треугольника через основание и высоту", pl.triangle_aria2(6, 7))
+# print("количество подсчетов", Area.get_count())
+#
+# class Date:
+#     def __init__(self, day=0, month=0, year=0):
+#         self.day = day
+#         self.month = month
+#         self.year = year
+#
+#     @classmethod
+#     def from_string(cls, string_date):
+#         day, month, year = map(int, string_date.split("."))
+#         date1 = cls(day, month, year)
+#         return date1
+#
+#     @staticmethod
+#     def date_validate(data_as_string):
+#         if data_as_string.count(".") == 2:
+#             day, month, year = map(int, data_as_string.split("."))
+#             return day <= 31 and month <= 12 and year <= 3999
+#
+#     def string_to_db(self):
+#         return f"{self.year}-{self.month}-{self.day}"
+#
+# dates = [
+#     "30.12.2000",
+#     "30-12-2000",
+#     "01.01.2000",
+#     "12.31.2000",
+# ]
+# for d in dates:
+#     if Date.date_validate(d):
+#         date = Date.from_string(d)
+#         st = date.string_to_db()
+#         print(st)
+#     else:
+#         print("не правильная строка с датами")
+# string_date = "23.10.2021"
+# day, month, year = map(int, string_date.split("."))
+# print(day, month, year)
+# d1 = Date.from_string("23.10.2021")
+# print(d1.string_to_db())
+# date = Date(day, month, year)
+# print(date.string_to_db())
+
+class Account:
+    rate_usd = 0.013
+    rate_eur = 0.011
+    suffix = "RUB"
+
+    def __init__(self, surname, num, persent, value=0):
+        self.surname = surname
+        self.num = num  # номер счета
+        self.persent = persent
+        self.value = value  # сумма в рублях
+        print(f"Счет #{self.num} принадлежит {self.surname}был открыт.")
+        print("*" * 50)
+
+    def __del__(self):
+        print("*"*50)
+        print(f"Счет #{self.num} принадлежит {self.surname}был закрыт.")
 
     @staticmethod
-    def get_count():
-        return Point.__count
+    def convert(value, rate):
+        return value * rate
+
+    @classmethod
+    def set_usd_rate(cls, rate):
+        cls.rate_usd = rate
+
+    def edit_owner(self, surname):
+        self.surname = surname
+
+    def add_persents(self):
+        print("Начисленно", self.value * self.persent)
 
 
-p1 = Point()
-p1 = Point()
-p1 = Point()
-print(p1.get_count())
+    def convert_to_usd(self):
+        print(f"состояние счета {Account.convert(self.value, Account.rate_usd)} USD")
+
+    def convert_to_eur(self):
+        print(f"состояние счета {Account.convert(self.value, Account.rate_eur)} EUR")
+
+    def print_balanse(self):
+        print(f"Текущий баланс {self.value} {Account.suffix}")
+
+    def print_info(self):
+        print("Информация о счете: ")
+        print("-" * 50)
+        print(f"Номер счета: #{self.num}")
+        print(f"Владелец: {self.surname}")
+        self.print_balanse()
+        print(f"Проценты: {self.persent:.0%}")
+        print("-" * 50)
+
+
+acc = Account("Долгих", "12345", 0.03, 1000)
+# acc = Account(num="12345", surname="Долгих", persent=0.03,, value = 1000)
+acc.print_balanse()
+# acc.print_info()
+acc.convert_to_usd()
+acc.convert_to_eur()
+Account.set_usd_rate(2)
+acc.convert_to_usd()
+acc.edit_owner("Дюма")
+acc.print_info()
+acc.add_persents()
+acc
